@@ -1,29 +1,43 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const map = L.map('map-container').setView([55.5, 21.0], 13);
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors'
+  }).addTo(map);
+
   fetch("data/sample_bird_data.csv")
     .then(response => response.text())
     .then(csvText => {
-      const rows = csvText.trim().split("\n").slice(1); // Skip header
-      const birds = rows.map(row => {
-        const [species, lat, lon, date] = row.split(",");
-        return { species, lat: parseFloat(lat), lon: parseFloat(lon), date: new Date(date) };
+      const rows = csvText.trim().split("\n").slice(1);
+      const birds = [];
+
+      rows.forEach(row => {
+        const [species, latStr, lonStr, dateStr] = row.split(",").map(cell => cell.trim());
+
+        const lat = parseFloat(latStr);
+        const lon = parseFloat(lonStr);
+        const date = new Date(dateStr);
+
+        if (!isNaN(lat) && !isNaN(lon)) {
+          birds.push({ species, lat, lon, date });
+          L.marker([lat, lon])
+            .addTo(map)
+            .bindPopup(`<strong>${species}</strong><br>${date.toLocaleString()}`);
+        }
       });
 
-      // Total birds
       document.getElementById("total-birds").textContent = `Total Birds Identified: ${birds.length}`;
 
-      // Most common bird
       const counts = birds.reduce((acc, bird) => {
         acc[bird.species] = (acc[bird.species] || 0) + 1;
         return acc;
       }, {});
-      const mostCommon = Object.entries(counts).sort((a, b) => b[1] - a[1])[0][0];
-      document.getElementById("common-bird").textContent = `Most Common Bird: ${mostCommon}`;
 
-      // Most recent sighting
+      const mostCommon = Object.entries(counts).sort((a, b) => b[1] - a[1])[0]?.[0];
       const latest = birds.sort((a, b) => b.date - a.date)[0];
-      document.getElementById("latest-sighting").textContent = `Most Recent Sighting: ${latest.species} on ${latest.date.toLocaleString()}`;
+
+      document.getElementById("common-bird").textContent = `Most Common Bird: ${mostCommon}`;
+      document.getElementById("latest-sighting").textContent = `Most Recent Sighting: ${latest?.species} on ${latest?.date.toLocaleString()}`;
     })
-    .catch(error => {
-      console.error("Error loading CSV:", error);
-    });
+    .catch(error => console.error("Error loading CSV:", error));
 });

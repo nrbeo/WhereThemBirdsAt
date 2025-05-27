@@ -1,15 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Bird Tracker Dashboard - Track bird species around WindTown tower in Svencelė.">
-  <meta name="keywords" content="Bird Tracker, Bird Species, WindTown, Svencelė, Biodiversity"> 
+  <meta name="keywords" content="Bird Tracker, Bird Species, WindTown, Svencelė, Biodiversity">
   <title>Bird Tracker | Home</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  
+  <script src="js/script.js"></script>
+
 </head>
+
 <body>
-  <header><h1>Bird Tracker Dashboard</h1></header>
+  <header>
+    <h1>Bird Tracker Dashboard</h1>
+  </header>
   <main>
     <section class="stats">
       <h2>Key Stats</h2>
@@ -19,13 +30,14 @@
     </section>
     <section id="map">
       <h2>Bird Sightings Map</h2>
-      <div id="map-container">Map visualization here (Leaflet.js or Google Maps API)</div>
+      <div id="map-container" style="height: 400px;"></div>
     </section>
   </main>
   <footer>
     <a href="species.html">Bird Species Info</a> |
     <a href="about.html">About</a>
   </footer>
-  <script src="js/script.js"></script>
+
 </body>
+
 </html>
