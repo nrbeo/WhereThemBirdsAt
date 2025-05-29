@@ -2,42 +2,54 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bird Tracker Dashboard - Track bird species around WindTown tower in Svencelė.">
-  <meta name="keywords" content="Bird Tracker, Bird Species, WindTown, Svencelė, Biodiversity">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bird Tracker | Home</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Leaflet CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-  
-  <script src="js/script.js"></script>
-
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
 
 <body>
-  <header>
-    <h1>Bird Tracker Dashboard</h1>
-  </header>
-  <main>
-    <section class="stats">
-      <h2>Key Stats</h2>
-      <div id="total-birds"></div>
-      <div id="common-bird"></div>
-      <div id="latest-sighting"></div>
-    </section>
-    <section id="map">
-      <h2>Bird Sightings Map</h2>
-      <div id="map-container" style="height: 400px;"></div>
-    </section>
-  </main>
-  <footer>
-    <a href="species.html">Bird Species Info</a> |
-    <a href="about.html">About</a>
-  </footer>
+  <div class="layout">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h1>Bird Tracker</h1>
+      <p class="tagline">Track and protect birdlife near WindTown.</p>
+      <nav>
+        <a href="index.html" class="active">Dashboard</a>
+        <a href="species.html">Species Info</a>
+        <a href="about.html">About</a>
+      </nav>
+    </aside>
 
+    <!-- Main Content -->
+    <main class="main-content">
+      <section class="hero">
+        <h2>Bird Sightings Overview</h2>
+        <div class="stats-grid">
+          <div class="card">
+            <img src="images/bird-icon.png" alt="Bird Icon" class="icon">
+            <span id="total-birds"></span>
+          </div>
+          <div class="card">
+            <img src="images/map-marker-icon.png" alt="Map Marker Icon" class="icon">
+            <span id="common-bird"></span>
+          </div>
+          <div class="card">
+            <img src="images/calendar-icon.png" alt="Calendar Icon" class="icon">            
+            <span id="latest-sighting"></span>
+          </div>
+
+        </div>
+      </section>
+      <section class="map-section">
+        <div id="map-container"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/script.js"></script>
 </body>
 
 </html>

@@ -37,7 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const latest = birds.sort((a, b) => b.date - a.date)[0];
 
       document.getElementById("common-bird").textContent = `Most Common Bird: ${mostCommon}`;
-      document.getElementById("latest-sighting").textContent = `Most Recent Sighting: ${latest?.species} on ${latest?.date.toLocaleString()}`;
+      document.getElementById("latest-sighting").textContent = `Last Sighting: ${latest?.species} on ${latest?.date.toLocaleString()}`;
     })
     .catch(error => console.error("Error loading CSV:", error));
 });
