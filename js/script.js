@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     attribution: '&copy; OpenStreetMap contributors'
   }).addTo(map);
 
-  fetch("data/sample_bird_data.csv")
+  fetch("data/bird_data.csv")
     .then(response => response.text())
     .then(csvText => {
       const rows = csvText.trim().split("\n").slice(1);
