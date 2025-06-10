@@ -51,9 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
             datasets: [{
               label: 'Bird Species Distribution',
               data: speciesCounts,
-              backgroundColor: speciesLabels.map((_, i) =>
-                `hsl(${i * 30}, 70%, 60%)`
-              ),
+              backgroundColor: [
+                '#6a994e', // olive green
+                '#a7c957', // lime moss
+                '#386641', // deep forest
+                '#f2e8cf', // beige
+              ],
               borderWidth: 1
             }]
           },
@@ -99,6 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
               title: {
                 display: true,
                 text: 'Bird Sightings Over Time'
+              },
+              legend: {
+                onClick: null
               }
             },
             scales: {

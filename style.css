@@ -66,7 +66,7 @@ html {
   -webkit-backdrop-filter: blur(8px);
   filter: brightness(0.85);
   border-left: 1px solid rgba(0, 0, 0, 0.05);
-  color: white; /* optional if you want white text instead */
+  color: white; 
 }
 
 
@@ -136,6 +136,24 @@ html {
   width: 100% !important;
   height: 300px !important;
 }
+
+.chart-section {
+  color: #2c3e2e;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-radius: 20px;
+  
+  backdrop-filter: blur(6px);
+  display: grid;
+  padding: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.chart-section canvas {
+  border-radius: 12px;
+  padding: 1rem;
+}
+
 
 /* .map-section {
   background: #ffffffcc;
