@@ -11,7 +11,10 @@ html {
   font-family: 'DM Sans', sans-serif;
   height: 100%;
   background-color: #f7f9f5;
+  overflow-x: hidden;
 }
+
+
 
 .layout {
   display: flex;
@@ -61,12 +64,12 @@ html {
   padding: 40px;
   overflow-y: auto;
   background: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.25)),
-              url('images/windtown.jpg') center/cover no-repeat;
+    url('images/windtown.jpg') center/cover no-repeat;
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   filter: brightness(0.85);
   border-left: 1px solid rgba(0, 0, 0, 0.05);
-  color: white; 
+  color: white;
 }
 
 
@@ -95,10 +98,12 @@ html {
   gap: 14px;
   min-width: 240px;
   font-size: 16px;
-  color: #3b4f3c; /* Modern forest green */
+  color: #3b4f3c;
+  /* Modern forest green */
   font-weight: 500;
   transition: background 0.3s ease;
 }
+
 .card:hover {
   background: rgba(255, 255, 255, 0.95);
 }
@@ -114,45 +119,71 @@ html {
 .map-and-charts {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   margin-top: 20px;
+  justify-content: space-between;
 }
 
 .map-container {
   flex: 1 1 500px;
-  min-height: 400px;
+  max-width: 45%;
+  height: 400px;
   border: 1px solid #ccc;
   border-radius: 10px;
+  overflow: hidden;
 }
 
+/* 
 .charts-container {
   flex: 1 1 400px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-}
+  max-width: 40%;
+  justify-content: space-between;
+} */
 
-.charts-container canvas {
-  width: 100% !important;
-  height: 300px !important;
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 60%;
+  height: 400px;
+  flex: 1 1 400px;
+  padding: 1rem;
+  color: #2c3e2e;
+  border-radius: 20px;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .chart-section {
-  color: #2c3e2e;
-  background: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  border-radius: 20px;
-  
-  backdrop-filter: blur(6px);
-  display: grid;
-  padding: 1rem;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  max-height: 90%;
+  justify-content: space-between;
+  align-items: center
 }
 
 .chart-section canvas {
-  border-radius: 12px;
-  padding: 1rem;
+  max-width: 45% !important;
+  max-height: 100% !important;
 }
+
+@media (max-width: 1024px) {
+  .map-and-charts {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #map-container,
+  .chart-section {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
 
 
 /* .map-section {
@@ -181,7 +212,8 @@ html {
 .species-card {
   display: flex;
   flex-direction: row;
-  background: rgba(255, 255, 255, 0.75); /* stronger contrast */
+  background: rgba(255, 255, 255, 0.75);
+  /* stronger contrast */
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -197,7 +229,7 @@ html {
 .species-card img {
   width: 160px;
   object-fit: cover;
-  border-right: 1px solid rgba(0,0,0,0.05);
+  border-right: 1px solid rgba(0, 0, 0, 0.05);
 }
 
 .species-card .info {
