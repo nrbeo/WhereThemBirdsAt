@@ -38,6 +38,76 @@ document.addEventListener("DOMContentLoaded", () => {
 
       document.getElementById("common-bird").textContent = `Most Common Bird: ${mostCommon}`;
       document.getElementById("latest-sighting").textContent = `Last Sighting: ${latest?.species} on ${latest?.date.toLocaleString()}`;
+
+      // ----- PIE CHART -----
+      const speciesLabels = Object.keys(counts);
+      const speciesCounts = Object.values(counts);
+
+      if (document.getElementById('speciesPieChart')) {
+        new Chart(document.getElementById('speciesPieChart'), {
+          type: 'pie',
+          data: {
+            labels: speciesLabels,
+            datasets: [{
+              label: 'Bird Species Distribution',
+              data: speciesCounts,
+              backgroundColor: speciesLabels.map((_, i) =>
+                `hsl(${i * 30}, 70%, 60%)`
+              ),
+              borderWidth: 1
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: { position: 'bottom' },
+              title: {
+                display: true,
+                text: 'Bird Species Seen'
+              }
+            }
+          }
+        });
+      }
+
+      // ----- LINE CHART -----
+      const sightingsByDate = {};
+      birds.forEach(bird => {
+        const dateStr = bird.date.toISOString().split('T')[0];
+        sightingsByDate[dateStr] = (sightingsByDate[dateStr] || 0) + 1;
+      });
+
+      const lineLabels = Object.keys(sightingsByDate).sort();
+      const lineData = lineLabels.map(date => sightingsByDate[date]);
+
+      if (document.getElementById('sightingsLineChart')) {
+        new Chart(document.getElementById('sightingsLineChart'), {
+          type: 'line',
+          data: {
+            labels: lineLabels,
+            datasets: [{
+              label: 'Sightings Per Day',
+              data: lineData,
+              fill: false,
+              borderColor: '#4bc0c0',
+              tension: 0.3
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              title: {
+                display: true,
+                text: 'Bird Sightings Over Time'
+              }
+            },
+            scales: {
+              x: { title: { display: true, text: 'Date' } },
+              y: { title: { display: true, text: 'Sightings' }, beginAtZero: true }
+            }
+          }
+        });
+      }
     })
     .catch(error => console.error("Error loading CSV:", error));
 });

@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bird Tracker | Home</title>
+  <link rel="icon" type="image/svg" href="images/favicon.svg" />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 </head>
@@ -36,18 +37,29 @@
             <span id="common-bird"></span>
           </div>
           <div class="card">
-            <img src="images/calendar-icon.png" alt="Calendar Icon" class="icon">            
+            <img src="images/calendar-icon.png" alt="Calendar Icon" class="icon">
             <span id="latest-sighting"></span>
           </div>
 
         </div>
       </section>
-      <section class="map-section">
+      <!-- <section class="map-section">
         <div id="map-container"></div>
+      </section> -->
+      <section class="map-and-charts">
+        <div class="map-container" id="map-container"></div>
+
+        <section class="chart-section">
+          <h2>Bird Sightings Breakdown</h2>
+          <canvas id="speciesPieChart" width="400" height="300"></canvas>
+          <canvas id="sightingsLineChart" width="400" height="300" style="margin-top: 2rem;"></canvas>
+        </section>
+
       </section>
+
     </main>
   </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
   <script src="js/script.js"></script>
 </body>
