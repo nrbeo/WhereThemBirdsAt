@@ -133,21 +133,11 @@ html {
   overflow: hidden;
 }
 
-/* 
-.charts-container {
-  flex: 1 1 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  max-width: 40%;
-  justify-content: space-between;
-} */
-
 .chart-container {
   display: flex;
   flex-direction: column;
   max-width: 60%;
-  height: 400px;
+  /* height: 400px; */
   flex: 1 1 400px;
   padding: 1rem;
   color: #2c3e2e;
@@ -167,24 +157,32 @@ html {
 }
 
 .chart-section canvas {
-  max-width: 45% !important;
-  max-height: 100% !important;
+  max-width: 50% !important;
+  max-height: 90% !important;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1080px) {
   .map-and-charts {
     flex-direction: column;
     align-items: center;
   }
 
-  #map-container,
-  .chart-section {
+  .map-container,
+ .chart-container {
     max-width: 100%;
     width: 100%;
   }
 }
 
+@media (max-width: 900px) {
+ .chart-section {
+    flex-direction: column;
+  }
+  .chart-section canvas {
+  max-width: 80% !important;
+}
 
+}
 
 /* .map-section {
   background: #ffffffcc;
